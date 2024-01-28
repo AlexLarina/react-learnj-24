@@ -1,7 +1,7 @@
 import { Menu } from "../menu/component";
 import { Reviews } from "../reviews/component";
 
-export const RestaurantCard = ({restaurant}) => {
+export const Restaurant = ({restaurant}) => {
 	if (!restaurant) {
 		return null;
 	}

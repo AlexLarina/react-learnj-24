@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 import { Layout } from "./components/layout/component";
-import { RestaurantCard } from "./components/restaurant-card/component";
+import { Restaurant } from "./components/restaurant/component";
 import { restaurants } from "./const/mocks";
 
 export const App = () => {
@@ -8,7 +8,7 @@ export const App = () => {
     <Layout>
       {restaurants.map((restaurant) => (
         <div>
-					<RestaurantCard 
+					<Restaurant
 						restaurant={restaurant} 
 						key={restaurant.id}
 					/>
