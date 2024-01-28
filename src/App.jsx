@@ -26,14 +26,6 @@ export const App = ({restaurants}) => {
           key={restaurant.id}
         />
       }
-      {/* {restaurants.map((restaurant) => (
-        <div>
-					<Restaurant
-						restaurant={restaurant} 
-						key={restaurant.id}
-					/>
-				</div>
-      ))} */}
     </Layout>
   );
 };
