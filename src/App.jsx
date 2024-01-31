@@ -1,19 +1,31 @@
 /* eslint-disable react/jsx-key */
+import { useState } from "react";
 import { Layout } from "./components/layout/component";
-import { RestaurantCard } from "./components/restaurant-card/component";
-import { restaurants } from "./const/mocks";
+import { Restaurant } from "./components/restaurant/component";
+import { Navigation } from "./components/navigation/component";
 
-export const App = () => {
+export const App = ({restaurants}) => {
+  const restaurantNames = restaurants.map((restaurant) => ({
+		id: restaurant.id,
+		name: restaurant.name
+	}));
+
+	const [chosenRestaurantId, setChosenRestaurantId] = useState();
+	const restaurant = restaurants.find((restaurant) => restaurant.id === chosenRestaurantId);
+
   return (
     <Layout>
-      {restaurants.map((restaurant) => (
-        <div>
-					<RestaurantCard 
-						restaurant={restaurant} 
-						key={restaurant.id}
-					/>
-				</div>
-      ))}
+      <Navigation 
+				restaurantNames={restaurantNames} 
+				onRestaurantClick={(name) => setChosenRestaurantId(name)}
+			/>
+      {
+        restaurant && 
+        <Restaurant
+          restaurant={restaurant} 
+          key={restaurant.id}
+        />
+      }
     </Layout>
   );
 };
