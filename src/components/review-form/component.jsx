@@ -1,5 +1,6 @@
-import { useReducer } from 'react';
+import { useReducer, useContext } from 'react';
 import { Counter } from "../counter/component";
+import { UserContext } from "../../contexts/user";
 
 const RATING_LIMIT = {
 	MIN: 1,
@@ -27,23 +28,15 @@ const reducer = (state, action) => {
 };
 
 export const ReviewForm = () => {
+	const { user } = useContext(UserContext);
 	const [formValue, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
 	return (
-		<>
+		user && <>
 			<h3>Ваш отзыв</h3>
 			<div>
 				<div>
-					<label htmlFor="name">Name:</label>
-					<input 
-						id="name" 
-						type="text"
-						placeholder="Как Вас зовут?"
-						value={formValue.name}
-						onChange={(event) => 
-							dispatch({ type: "setName", payload: event.target.value})
-						}
-					/>
+					{user.name}
 				</div>
 
 				<div>
