@@ -1,11 +1,16 @@
 import { useSelector } from 'react-redux';
+import { selectReviewById } from "../../redux/entities/review/selectors";
 import star from './star.png';
+import { selectUserById } from '../../redux/entities/user/selectors';
 
 export const Review = ({reviewId}) => {
-	console.log(reviewId)
-	const review = useSelector((state) => state.review.entities[reviewId]);
-	const user = useSelector((state) => state.user.entities[review.userId])
-	console.log(review)
+	const review = useSelector((state) => 
+		selectReviewById(state, reviewId)
+	);
+	const user = useSelector((state) => 
+		selectUserById(state, review.userId)
+	)
+	
 	if (!review) {
 		return null;
 	}

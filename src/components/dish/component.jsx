@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Counter } from "../counter/component";
 import { useSelector } from "react-redux";
+import { selectDishById } from "../../redux/entities/dish/selectors";
 
 const DISH_LIMIT = {
 	MIN: 0,
@@ -10,7 +11,9 @@ const DISH_LIMIT = {
 
 export const Dish = ({dishId}) => {
 	const [dishAmount, setDishAmount] = useState(0);
-	const dish = useSelector((state) => state.dish.entities[dishId])
+	const dish = useSelector((state) => 
+		selectDishById(state, dishId)
+	);
 
 	if (!dish) {
 		return null;

@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { RestaurantTab } from "../restaurant-tab/component";
+import { selectRestaurantIds, selectRestaurants } from "../../redux/entities/restaurant/selectors"
 
 export const Navigation = ({onRestaurantClick}) => {
-	const restaurantIds = useSelector((state) => state.restaurant.id)
-	const restaurants = useSelector((state) => state.restaurant.entities)
+	const restaurantIds = useSelector(selectRestaurantIds);
+	const restaurants = useSelector(selectRestaurants);
 
 	return (
 		<nav>

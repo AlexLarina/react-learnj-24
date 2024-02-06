@@ -1,0 +1,1 @@
+export const selectReviewById = (state, id) => state.review.entities[id];
