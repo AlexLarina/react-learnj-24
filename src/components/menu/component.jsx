@@ -4,8 +4,7 @@ export const Menu = ({menu}) => {
 	if (!menu) {
 		return null;
 	}
-	console.log(menu)
-	
+		
 	return (
 		<div>
 			<h3>Меню</h3>

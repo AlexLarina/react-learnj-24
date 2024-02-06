@@ -11,7 +11,6 @@ const DISH_LIMIT = {
 export const Dish = ({dishId}) => {
 	const [dishAmount, setDishAmount] = useState(0);
 	const dish = useSelector((state) => state.dish.entities[dishId])
-	console.log(dish)
 
 	if (!dish) {
 		return null;
