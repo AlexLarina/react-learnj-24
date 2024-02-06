@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Counter } from "../counter/component";
+import { useSelector } from "react-redux";
 
 const DISH_LIMIT = {
 	MIN: 0,
@@ -7,8 +8,10 @@ const DISH_LIMIT = {
 	STEP: 1
 }
 
-export const Dish = ({dish}) => {
+export const Dish = ({dishId}) => {
 	const [dishAmount, setDishAmount] = useState(0);
+	const dish = useSelector((state) => state.dish.entities[dishId])
+	console.log(dish)
 
 	if (!dish) {
 		return null;

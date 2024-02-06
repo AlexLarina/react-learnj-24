@@ -4,13 +4,14 @@ export const Menu = ({menu}) => {
 	if (!menu) {
 		return null;
 	}
+	console.log(menu)
 	
 	return (
 		<div>
 			<h3>Меню</h3>
 			<ul>
 				{
-					menu.map((dish) => <li key={dish.id}><Dish dish={dish}/></li>)
+					menu.map((dishId) => <li key={dishId}><Dish dishId={dishId}/></li>)
 				}
 			</ul>
 		</div>

@@ -1,14 +1,18 @@
+import { useSelector } from "react-redux";
 import { RestaurantTab } from "../restaurant-tab/component";
 
-export const Navigation = ({restaurantNames, onRestaurantClick}) => {
+export const Navigation = ({onRestaurantClick}) => {
+	const restaurantIds = useSelector((state) => state.restaurant.id)
+	const restaurants = useSelector((state) => state.restaurant.entities)
+
 	return (
 		<nav>
 			{
-				restaurantNames.map(({id, name}) => (
+				restaurantIds.map((restaurantId) => (
 					<RestaurantTab 
-						name={name} 
-						key={`nav-${id}`} 
-						onClick={() => onRestaurantClick(id)}
+						name={restaurants[restaurantId].name} 
+						key={`nav-${restaurantId}`} 
+						onClick={() => onRestaurantClick(restaurantId)}
 					/>
 				))
 			}
