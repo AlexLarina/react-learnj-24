@@ -9,7 +9,6 @@ export const dishSlice = createSlice({
 	initialState: entityAdapter.getInitialState(),
 	extraReducers: (builder) =>
     builder.addCase(getDishes.fulfilled, (state, { payload }) => {
-			console.log(payload)
       entityAdapter.setAll(state, payload);
     }),
 	// initialState: {

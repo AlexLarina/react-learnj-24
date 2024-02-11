@@ -4,8 +4,7 @@ import { Dish } from "../dish/component";
 
 export const Menu = () => {
 	const dishes = useSelector(selectDishes);
-
-	console.log(dishes)
+	
 	if (!dishes) {
 		return null;
 	}

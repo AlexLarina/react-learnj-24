@@ -15,8 +15,6 @@ export const Dish = ({dishId}) => {
 		selectDishById(state, dishId)
 	);
 
-	console.log(dish)
-
 	if (!dish) {
 		return null;
 	}

@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
+import { selectReviews } from "../../redux/entities/review/selectors";
 import { Review } from "../review/component";
 
-export const Reviews = ({reviews}) => {
+export const Reviews = () => {
+	const reviews = useSelector(selectReviews);
 	if (!reviews) {
 		return null;
 	}
@@ -10,7 +13,7 @@ export const Reviews = ({reviews}) => {
 			<h3>Отзывы</h3>
 			<ul>
 				{
-					reviews.map((reviewId) => <li key={reviewId}><Review reviewId={reviewId}/></li>)
+					Object.keys(reviews).map((reviewId) => <li key={reviewId}><Review reviewId={reviewId}/></li>)
 				}
 			</ul>
 		</>
