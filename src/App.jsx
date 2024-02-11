@@ -14,13 +14,7 @@ export const App = () => {
     [user]
   );
 
-  // const restaurantNames = restaurants.map((restaurant) => ({
-	// 	id: restaurant.id,
-	// 	name: restaurant.name
-	// }));
-
 	const [chosenRestaurantId, setChosenRestaurantId] = useState();
-	//const restaurant = restaurants.find((restaurant) => restaurant.id === chosenRestaurantId);
 
   return (
     <Provider store={store}>
@@ -33,8 +27,6 @@ export const App = () => {
             chosenRestaurantId && 
             <Restaurant
               chosenRestaurantId={chosenRestaurantId}
-              // restaurant={restaurant} 
-              // key={restaurant.id}
             />
           }
         </Layout>
