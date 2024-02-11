@@ -1,6 +1,5 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { getReviews } from "./thunks/get-reviews";
-import { normalizedReviews } from "../../../const/normalized-mock";
 
 const entityAdapter = createEntityAdapter();
 
@@ -12,12 +11,4 @@ export const reviewSlice = createSlice({
 			console.log(payload)
       entityAdapter.setAll(state, payload);
     }),
-	// initialState: {
-	// 	entities: normalizedReviews.reduce((acc, review) => {
-	// 		acc[review.id] = review;
-
-	// 		return acc;
-	// 	}, {}),
-	// 	id: normalizedReviews.map(({ id }) => id),
-	// }
 })
