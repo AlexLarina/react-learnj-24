@@ -1,7 +1,12 @@
+import { useSelector } from "react-redux";
+import { selectDishes } from "../../redux/entities/dish/selectors";
 import { Dish } from "../dish/component";
 
-export const Menu = ({menu}) => {
-	if (!menu) {
+export const Menu = () => {
+	const dishes = useSelector(selectDishes);
+
+	console.log(dishes)
+	if (!dishes) {
 		return null;
 	}
 		
@@ -10,7 +15,7 @@ export const Menu = ({menu}) => {
 			<h3>Меню</h3>
 			<ul>
 				{
-					menu.map((dishId) => <li key={dishId}><Dish dishId={dishId}/></li>)
+					Object.keys(dishes).map((dishId) => <li key={dishId}><Dish dishId={dishId}/></li>)
 				}
 			</ul>
 		</div>
