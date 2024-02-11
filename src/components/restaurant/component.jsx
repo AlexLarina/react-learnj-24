@@ -8,6 +8,7 @@ import { selectRestaurantById } from "../../redux/entities/restaurant/selectors"
 import { getDishes } from "../../redux/entities/dish/thunks/get-dishes";
 import { selectIsLoading } from "../../redux/ui/request";
 import { getReviews } from "../../redux/entities/review/thunks/get-reviews";
+import { getUsers } from "../../redux/entities/user/thunks/get-users";
 
 export const Restaurant = ({chosenRestaurantId}) => {
 	const restaurant = useSelector((state) => 
@@ -24,6 +25,11 @@ export const Restaurant = ({chosenRestaurantId}) => {
     (state) => menuRequestId && selectIsLoading(state, reviewsRequestId)
   );
 
+	const [usersRequestId, setUsersRequestId] = useState();
+	const isUsersLoading = useSelector(
+    (state) => menuRequestId && selectIsLoading(state, usersRequestId)
+  );
+
 	const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,6 +39,10 @@ export const Restaurant = ({chosenRestaurantId}) => {
 	useEffect(() => {
     setReviewsRequestId(dispatch(getReviews(chosenRestaurantId)).requestId);
   }, [dispatch, chosenRestaurantId]);
+
+	useEffect(() => {
+    setUsersRequestId(dispatch(getUsers()).requestId);
+  }, [dispatch]);
 
 	if (!restaurant) {
 		return null;
@@ -50,7 +60,7 @@ export const Restaurant = ({chosenRestaurantId}) => {
 				<Menu />
 			}
 			{
-				isReviewsLoading 
+				isReviewsLoading && isUsersLoading
 				? (
 					<div>Reviews loading...</div>
 				) 
