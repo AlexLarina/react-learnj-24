@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { RestaurantTab } from "../restaurant-tab/component";
 import { getRestaurants } from "../../redux/entities/restaurant/thunks/get-restaurants";
 import { selectIsLoading } from "../../redux/ui/request";
-import { selectRestaurantIds, selectRestaurants } from "../../redux/entities/restaurant/selectors"
+import { selectRestaurants } from "../../redux/entities/restaurant/selectors"
 
 export const Navigation = ({onRestaurantClick}) => {
-	//const restaurantIds = useSelector(selectRestaurantIds);
 	const restaurants = useSelector(selectRestaurants);
 
 	const [requestId, setRequestId] = useState();

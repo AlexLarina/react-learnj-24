@@ -14,5 +14,3 @@ export const store = configureStore({
 		requestSlice,
 	),
 });
-
-console.log(store.getState());
