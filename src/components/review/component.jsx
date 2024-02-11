@@ -1,6 +1,16 @@
+import { useSelector } from 'react-redux';
+import { selectReviewById } from "../../redux/entities/review/selectors";
 import star from './star.png';
+import { selectUserById } from '../../redux/entities/user/selectors';
 
-export const Review = ({review}) => {
+export const Review = ({reviewId}) => {
+	const review = useSelector((state) => 
+		selectReviewById(state, reviewId)
+	);
+	const user = useSelector((state) => 
+		selectUserById(state, review.userId)
+	)
+	
 	if (!review) {
 		return null;
 	}
@@ -9,7 +19,7 @@ export const Review = ({review}) => {
 		<div>
 			<p>&quot;{review.text}&quot;</p>
 			<p>
-				<i>{review.user}</i>
+				{user ? <i>{user.name}</i> : 'Посетитель' }
 				<span>
 					{
 						[...new Array(review.rating)].map(
