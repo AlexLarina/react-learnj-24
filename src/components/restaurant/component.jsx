@@ -60,12 +60,17 @@ export const Restaurant = ({chosenRestaurantId}) => {
 				<Menu />
 			}
 			{
-				isReviewsLoading && isUsersLoading
+				
+			}
+			{
+				isReviewsLoading
 				? (
 					<div>Reviews loading...</div>
 				) 
 				:
-				<Reviews />
+				(
+					isUsersLoading ? (<div>Users loading...</div>) : <Reviews />
+				)
 			}
 			<ReviewForm />
 		</div>
